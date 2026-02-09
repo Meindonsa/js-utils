@@ -3,7 +3,7 @@
 Une librairie TypeScript complète d'utilitaires pour vos projets Angular, Vue et React.
 
 [![npm version](https://img.shields.io/npm/v/@meindonsa/js-utils.svg)](https://www.npmjs.com/package/@meindonsa/js-utils)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## 📦 Installation
 
@@ -238,7 +238,7 @@ Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou un
 
 ## 📄 License
 
-MIT © [Your Name]
+GPL-3.0 © [Your Name]
 
 ## 🔗 Liens
 
