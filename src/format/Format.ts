@@ -15,7 +15,7 @@
  * ```
  */
 export function formatNumber(value: number, separator: string = ','): string {
-    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
 }
 
 /**
@@ -31,14 +31,14 @@ export function formatNumber(value: number, separator: string = ','): string {
  * ```
  */
 export function formatCurrency(
-    value: number,
-    currency: string = 'USD',
-    locale: string = 'en-US'
+  value: number,
+  currency: string = 'USD',
+  locale: string = 'en-US',
 ): string {
-    return new Intl.NumberFormat(locale, {
-        style: 'currency',
-        currency,
-    }).format(value);
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency,
+  }).format(value);
 }
 
 /**
@@ -53,7 +53,7 @@ export function formatCurrency(
  * ```
  */
 export function formatPercentage(value: number, decimals: number = 0): string {
-    return `${(value * 100).toFixed(decimals)}%`;
+  return `${(value * 100).toFixed(decimals)}%`;
 }
 
 /**
@@ -68,7 +68,7 @@ export function formatPercentage(value: number, decimals: number = 0): string {
  * ```
  */
 export function formatDecimal(value: number, decimals: number): string {
-    return value.toFixed(decimals);
+  return value.toFixed(decimals);
 }
 
 /**
@@ -84,10 +84,10 @@ export function formatDecimal(value: number, decimals: number): string {
  * ```
  */
 export function truncate(text: string, maxLength: number, suffix: string = '...'): string {
-    if (text.length <= maxLength) {
-        return text;
-    }
-    return text.slice(0, maxLength - suffix.length) + suffix;
+  if (text.length <= maxLength) {
+    return text;
+  }
+  return text.slice(0, maxLength - suffix.length) + suffix;
 }
 
 /**
@@ -101,11 +101,11 @@ export function truncate(text: string, maxLength: number, suffix: string = '...'
  * ```
  */
 export function toTitleCase(text: string): string {
-    return text
-        .toLowerCase()
-        .split(' ')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
+  return text
+    .toLowerCase()
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 }
 
 /**
@@ -119,11 +119,11 @@ export function toTitleCase(text: string): string {
  * ```
  */
 export function toCamelCase(text: string): string {
-    return text
-        .replace(/(?:^\w|[A-Z]|\b\w)/g, (letter, index) =>
-            index === 0 ? letter.toLowerCase() : letter.toUpperCase()
-        )
-        .replace(/\s+|-|_/g, '');
+  return text
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, (letter, index) =>
+      index === 0 ? letter.toLowerCase() : letter.toUpperCase(),
+    )
+    .replace(/\s+|-|_/g, '');
 }
 
 /**
@@ -137,11 +137,11 @@ export function toCamelCase(text: string): string {
  * ```
  */
 export function toSnakeCase(text: string): string {
-    return text
-        .replace(/([A-Z])/g, '_$1')
-        .toLowerCase()
-        .replace(/\s+/g, '_')
-        .replace(/^_/, '');
+  return text
+    .replace(/([A-Z])/g, '_$1')
+    .toLowerCase()
+    .replace(/\s+/g, '_')
+    .replace(/^_/, '');
 }
 
 /**
@@ -155,11 +155,11 @@ export function toSnakeCase(text: string): string {
  * ```
  */
 export function toKebabCase(text: string): string {
-    return text
-        .replace(/([A-Z])/g, '-$1')
-        .toLowerCase()
-        .replace(/\s+/g, '-')
-        .replace(/^-/, '');
+  return text
+    .replace(/([A-Z])/g, '-$1')
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/^-/, '');
 }
 
 /**
@@ -173,7 +173,7 @@ export function toKebabCase(text: string): string {
  * ```
  */
 export function capitalize(text: string): string {
-    return text.charAt(0).toUpperCase() + text.slice(1);
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 /**
@@ -187,7 +187,7 @@ export function capitalize(text: string): string {
  * ```
  */
 export function removeAccents(text: string): string {
-    return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
 /**
@@ -201,12 +201,12 @@ export function removeAccents(text: string): string {
  * ```
  */
 export function slugify(text: string): string {
-    return removeAccents(text)
-        .toLowerCase()
-        .trim()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/[\s_-]+/g, '-')
-        .replace(/^-+|-+$/g, '');
+  return removeAccents(text)
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 /**
@@ -223,26 +223,26 @@ export function slugify(text: string): string {
  * ```
  */
 export function pad(
-    text: string,
-    length: number,
-    char: string = ' ',
-    direction: 'left' | 'right' | 'both' = 'right'
+  text: string,
+  length: number,
+  char: string = ' ',
+  direction: 'left' | 'right' | 'both' = 'right',
 ): string {
-    if (text.length >= length) {
-        return text;
-    }
+  if (text.length >= length) {
+    return text;
+  }
 
-    const padLength = length - text.length;
+  const padLength = length - text.length;
 
-    if (direction === 'left') {
-        return char.repeat(padLength) + text;
-    } else if (direction === 'right') {
-        return text + char.repeat(padLength);
-    } else {
-        const leftPad = Math.floor(padLength / 2);
-        const rightPad = padLength - leftPad;
-        return char.repeat(leftPad) + text + char.repeat(rightPad);
-    }
+  if (direction === 'left') {
+    return char.repeat(padLength) + text;
+  } else if (direction === 'right') {
+    return text + char.repeat(padLength);
+  } else {
+    const leftPad = Math.floor(padLength / 2);
+    const rightPad = padLength - leftPad;
+    return char.repeat(leftPad) + text + char.repeat(rightPad);
+  }
 }
 
 /**
@@ -259,20 +259,20 @@ export function pad(
  * ```
  */
 export function mask(
-    text: string,
-    visibleStart: number = 4,
-    visibleEnd: number = 4,
-    maskChar: string = '*'
+  text: string,
+  visibleStart: number = 4,
+  visibleEnd: number = 4,
+  maskChar: string = '*',
 ): string {
-    if (text.length <= visibleStart + visibleEnd) {
-        return text;
-    }
+  if (text.length <= visibleStart + visibleEnd) {
+    return text;
+  }
 
-    const start = text.slice(0, visibleStart);
-    const end = text.slice(-visibleEnd);
-    const masked = maskChar.repeat(text.length - visibleStart - visibleEnd);
+  const start = text.slice(0, visibleStart);
+  const end = text.slice(-visibleEnd);
+  const masked = maskChar.repeat(text.length - visibleStart - visibleEnd);
 
-    return start + masked + end;
+  return start + masked + end;
 }
 
 /**
@@ -287,14 +287,14 @@ export function mask(
  * ```
  */
 export function formatPhone(phone: string, format: string = '(XXX) XXX-XXXX'): string {
-    const cleaned = phone.replace(/\D/g, '');
-    let result = format;
+  const cleaned = phone.replace(/\D/g, '');
+  let result = format;
 
-    for (const digit of cleaned) {
-        result = result.replace('X', digit);
-    }
+  for (const digit of cleaned) {
+    result = result.replace('X', digit);
+  }
 
-    return result;
+  return result;
 }
 
 /**
@@ -309,8 +309,8 @@ export function formatPhone(phone: string, format: string = '(XXX) XXX-XXXX'): s
  * ```
  */
 export function formatCreditCard(cardNumber: string, separator: string = ' '): string {
-    const cleaned = cardNumber.replace(/\s/g, '');
-    return cleaned.replace(/(\d{4})/g, `$1${separator}`).trim();
+  const cleaned = cardNumber.replace(/\s/g, '');
+  return cleaned.replace(/(\d{4})/g, `$1${separator}`).trim();
 }
 
 /**
@@ -323,15 +323,15 @@ export function formatCreditCard(cardNumber: string, separator: string = ' '): s
  * ```
  */
 export function escapeHtml(text: string): string {
-    const map: Record<string, string> = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;',
-    };
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  };
 
-    return text.replace(/[&<>"']/g, (char) => map[char]);
+  return text.replace(/[&<>"']/g, (char) => map[char]);
 }
 
 /**
@@ -344,13 +344,13 @@ export function escapeHtml(text: string): string {
  * ```
  */
 export function unescapeHtml(text: string): string {
-    const map: Record<string, string> = {
-        '&amp;': '&',
-        '&lt;': '<',
-        '&gt;': '>',
-        '&quot;': '"',
-        '&#039;': "'",
-    };
+  const map: Record<string, string> = {
+    '&amp;': '&',
+    '&lt;': '<',
+    '&gt;': '>',
+    '&quot;': '"',
+    '&#039;': "'",
+  };
 
-    return text.replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, (entity) => map[entity]);
+  return text.replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, (entity) => map[entity]);
 }

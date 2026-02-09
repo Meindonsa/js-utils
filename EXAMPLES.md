@@ -3,6 +3,7 @@
 ## Angular
 
 ### app.component.ts
+
 ```typescript
 import { Component } from '@angular/core';
 import { formatDate, addDays } from '@meindonsa/js-utils/utils/date';
@@ -11,7 +12,7 @@ import { isValidEmail } from '@meindonsa/js-utils/utils/validation';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
   // Formater une date
@@ -33,6 +34,7 @@ export class AppComponent {
 ## Vue 3 (Composition API)
 
 ### ProductCard.vue
+
 ```vue
 <script setup lang="ts">
 import { computed } from 'vue';
@@ -46,13 +48,9 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const formattedPrice = computed(() =>
-  formatCurrency(props.price, 'EUR', 'fr-FR')
-);
+const formattedPrice = computed(() => formatCurrency(props.price, 'EUR', 'fr-FR'));
 
-const formattedDate = computed(() =>
-  formatDate(props.createdAt, 'DD/MM/YYYY')
-);
+const formattedDate = computed(() => formatDate(props.createdAt, 'DD/MM/YYYY'));
 </script>
 
 <template>
@@ -66,6 +64,7 @@ const formattedDate = computed(() =>
 ## React
 
 ### UserForm.tsx
+
 ```typescript
 import React, { useState } from 'react';
 import { isValidEmail, validatePassword } from '@meindonsa/js-utils/utils/validation';
@@ -153,12 +152,13 @@ export const UserForm: React.FC = () => {
 ## Exemples de cas d'usage courants
 
 ### 1. Upload et validation de fichiers
+
 ```typescript
 import {
   validateFileSize,
   validateFileType,
   formatFileSize,
-  getFileExtension
+  getFileExtension,
 } from '@meindonsa/js-utils/utils/file';
 
 function handleFileUpload(file: File) {
@@ -181,6 +181,7 @@ function handleFileUpload(file: File) {
 ```
 
 ### 2. Recherche et filtrage de données
+
 ```typescript
 import { searchArray, sortBy, paginate } from '@meindonsa/js-utils/utils/array';
 
@@ -206,12 +207,13 @@ console.log(page1.totalPages); // Nombre total de pages
 ```
 
 ### 3. Formatage pour l'affichage
+
 ```typescript
 import {
   formatCurrency,
   formatNumber,
   formatPercentage,
-  truncate
+  truncate,
 } from '@meindonsa/js-utils/utils/format';
 
 // Dashboard e-commerce
@@ -219,17 +221,14 @@ const productCard = {
   price: formatCurrency(1299.99, 'EUR', 'fr-FR'), // '1 299,99 €'
   views: formatNumber(125420), // '125,420'
   conversionRate: formatPercentage(0.0347, 2), // '3.47%'
-  description: truncate('Lorem ipsum dolor sit amet...', 50)
+  description: truncate('Lorem ipsum dolor sit amet...', 50),
 };
 ```
 
 ### 4. Génération de codes et tokens
+
 ```typescript
-import {
-  randomNumeric,
-  randomAlphanumeric,
-  randomUuid
-} from '@meindonsa/js-utils/utils/random';
+import { randomNumeric, randomAlphanumeric, randomUuid } from '@meindonsa/js-utils/utils/random';
 
 // Code de vérification SMS
 const smsCode = randomNumeric(6); // '472819'
@@ -242,13 +241,14 @@ const transactionId = randomUuid(); // '550e8400-e29b-41d4-a716-446655440000'
 ```
 
 ### 5. Manipulation de dates
+
 ```typescript
 import {
   formatDate,
   addDays,
   diffInDays,
   isToday,
-  getRelativeTime
+  getRelativeTime,
 } from '@meindonsa/js-utils/utils/date';
 
 // Calculer une date d'expiration
@@ -264,12 +264,13 @@ console.log(getRelativeTime(commentDate)); // '5 days ago'
 ```
 
 ### 6. Validation de formulaire complet
+
 ```typescript
 import {
   isValidEmail,
   isValidPhone,
   validatePassword,
-  isEmpty
+  isEmpty,
 } from '@meindonsa/js-utils/utils/validation';
 
 interface RegistrationForm {

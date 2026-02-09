@@ -7,35 +7,35 @@
  * Supported image MIME types
  */
 export const IMAGE_MIME_TYPES = [
-    'image/jpeg',
-    'image/jpg',
-    'image/png',
-    'image/gif',
-    'image/webp',
-    'image/svg+xml',
-    'image/bmp',
+  'image/jpeg',
+  'image/jpg',
+  'image/png',
+  'image/gif',
+  'image/webp',
+  'image/svg+xml',
+  'image/bmp',
 ] as const;
 
 /**
  * Supported video MIME types
  */
 export const VIDEO_MIME_TYPES = [
-    'video/mp4',
-    'video/webm',
-    'video/ogg',
-    'video/quicktime',
-    'video/x-msvideo',
+  'video/mp4',
+  'video/webm',
+  'video/ogg',
+  'video/quicktime',
+  'video/x-msvideo',
 ] as const;
 
 /**
  * Supported document MIME types
  */
 export const DOCUMENT_MIME_TYPES = [
-    'application/pdf',
-    'application/msword',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    'application/vnd.ms-excel',
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  'application/pdf',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'application/vnd.ms-excel',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 ] as const;
 
 /**
@@ -54,7 +54,7 @@ export type FileType = 'image' | 'video' | 'document' | 'unknown';
  * ```
  */
 export function isImage(mimeType: string): boolean {
-    return IMAGE_MIME_TYPES.includes(mimeType as any);
+  return IMAGE_MIME_TYPES.includes(mimeType as any);
 }
 
 /**
@@ -68,7 +68,7 @@ export function isImage(mimeType: string): boolean {
  * ```
  */
 export function isVideo(mimeType: string): boolean {
-    return VIDEO_MIME_TYPES.includes(mimeType as any);
+  return VIDEO_MIME_TYPES.includes(mimeType as any);
 }
 
 /**
@@ -82,7 +82,7 @@ export function isVideo(mimeType: string): boolean {
  * ```
  */
 export function isDocument(mimeType: string): boolean {
-    return DOCUMENT_MIME_TYPES.includes(mimeType as any);
+  return DOCUMENT_MIME_TYPES.includes(mimeType as any);
 }
 
 /**
@@ -98,10 +98,10 @@ export function isDocument(mimeType: string): boolean {
  * ```
  */
 export function getFileType(mimeType: string): FileType {
-    if (isImage(mimeType)) return 'image';
-    if (isVideo(mimeType)) return 'video';
-    if (isDocument(mimeType)) return 'document';
-    return 'unknown';
+  if (isImage(mimeType)) return 'image';
+  if (isVideo(mimeType)) return 'video';
+  if (isDocument(mimeType)) return 'document';
+  return 'unknown';
 }
 
 /**
@@ -117,15 +117,15 @@ export function getFileType(mimeType: string): FileType {
  * ```
  */
 export function formatFileSize(bytes: number, decimals: number = 2): string {
-    if (bytes === 0) return '0 Bytes';
+  if (bytes === 0) return '0 Bytes';
 
-    const k = 1024;
-    const dm = decimals < 0 ? 0 : decimals;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
 
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
 
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
 /**
@@ -140,8 +140,8 @@ export function formatFileSize(bytes: number, decimals: number = 2): string {
  * ```
  */
 export function getFileExtension(filename: string): string {
-    const parts = filename.split('.');
-    return parts.length > 1 ? parts[parts.length - 1].toLowerCase() : '';
+  const parts = filename.split('.');
+  return parts.length > 1 ? parts[parts.length - 1].toLowerCase() : '';
 }
 
 /**
@@ -155,8 +155,8 @@ export function getFileExtension(filename: string): string {
  * ```
  */
 export function getFileNameWithoutExtension(filename: string): string {
-    const lastDotIndex = filename.lastIndexOf('.');
-    return lastDotIndex === -1 ? filename : filename.substring(0, lastDotIndex);
+  const lastDotIndex = filename.lastIndexOf('.');
+  return lastDotIndex === -1 ? filename : filename.substring(0, lastDotIndex);
 }
 
 /**
@@ -169,17 +169,17 @@ export function getFileNameWithoutExtension(filename: string): string {
  * ```
  */
 export function fileToBase64(file: File | Blob): Promise<string> {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = (): void => {
-            const result = reader.result as string;
-            // Remove data URL prefix
-            const base64: string = result.split(',')[1];
-            resolve(base64);
-        };
-        reader.onerror = (error): void => reject(error);
-    });
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (): void => {
+      const result = reader.result as string;
+      // Remove data URL prefix
+      const base64: string = result.split(',')[1];
+      resolve(base64);
+    };
+    reader.onerror = (error): void => reject(error);
+  });
 }
 
 /**
@@ -193,15 +193,15 @@ export function fileToBase64(file: File | Blob): Promise<string> {
  * ```
  */
 export function base64ToBlob(base64: string, mimeType: string): Blob {
-    const byteCharacters: string = atob(base64);
-    const byteNumbers = new Array(byteCharacters.length);
+  const byteCharacters: string = atob(base64);
+  const byteNumbers = new Array(byteCharacters.length);
 
-    for (let i: number = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
+  for (let i: number = 0; i < byteCharacters.length; i++) {
+    byteNumbers[i] = byteCharacters.charCodeAt(i);
+  }
 
-    const byteArray = new Uint8Array(byteNumbers);
-    return new Blob([byteArray], { type: mimeType });
+  const byteArray = new Uint8Array(byteNumbers);
+  return new Blob([byteArray], { type: mimeType });
 }
 
 /**
@@ -215,17 +215,17 @@ export function base64ToBlob(base64: string, mimeType: string): Blob {
  * ```
  */
 export function downloadFile(data: string | Blob, filename: string): void {
-    const url: string = typeof data === 'string' ? data : URL.createObjectURL(data);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const url: string = typeof data === 'string' ? data : URL.createObjectURL(data);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 
-    if (typeof data !== 'string') {
-        URL.revokeObjectURL(url);
-    }
+  if (typeof data !== 'string') {
+    URL.revokeObjectURL(url);
+  }
 }
 
 /**
@@ -239,8 +239,8 @@ export function downloadFile(data: string | Blob, filename: string): void {
  * ```
  */
 export function validateFileSize(file: File, maxSizeInMB: number): boolean {
-    const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
-    return file.size <= maxSizeInBytes;
+  const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
+  return file.size <= maxSizeInBytes;
 }
 
 /**
@@ -254,5 +254,5 @@ export function validateFileSize(file: File, maxSizeInMB: number): boolean {
  * ```
  */
 export function validateFileType(file: File, allowedTypes: string[]): boolean {
-    return allowedTypes.includes(file.type);
+  return allowedTypes.includes(file.type);
 }

@@ -10,6 +10,7 @@ et ce projet adhère à [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Ajouté
 
 #### Module File
+
 - `isImage()` - Vérifier si un fichier est une image
 - `isVideo()` - Vérifier si un fichier est une vidéo
 - `isDocument()` - Vérifier si un fichier est un document
@@ -24,6 +25,7 @@ et ce projet adhère à [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `validateFileType()` - Valider le type de fichier
 
 #### Module Date
+
 - `formatDate()` - Formater une date
 - `addDays()` - Ajouter des jours à une date
 - `addMonths()` - Ajouter des mois à une date
@@ -43,6 +45,7 @@ et ce projet adhère à [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `getRelativeTime()` - Obtenir le temps relatif
 
 #### Module Validation
+
 - `isValidEmail()` - Valider un email
 - `isValidUrl()` - Valider une URL
 - `isValidPhone()` - Valider un numéro de téléphone
@@ -61,6 +64,7 @@ et ce projet adhère à [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `isValidUsername()` - Valider un nom d'utilisateur
 
 #### Module Format
+
 - `formatNumber()` - Formater un nombre
 - `formatCurrency()` - Formater une devise
 - `formatPercentage()` - Formater un pourcentage
@@ -81,6 +85,7 @@ et ce projet adhère à [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `unescapeHtml()` - Dé-échapper HTML
 
 #### Module Random
+
 - `randomNumber()` - Nombre aléatoire
 - `randomInt()` - Entier aléatoire
 - `randomFloat()` - Nombre décimal aléatoire
@@ -100,6 +105,7 @@ et ce projet adhère à [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `randomMacAddress()` - Adresse MAC aléatoire
 
 #### Module Array
+
 - `findByProperty()` - Trouver par propriété
 - `findAllByProperty()` - Trouver tous par propriété
 - `findIndexByProperty()` - Trouver l'index par propriété
@@ -126,6 +132,7 @@ et ce projet adhère à [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `rotate()` - Rotation d'éléments
 
 ### Infrastructure
+
 - Support ESM et CommonJS
 - Tree-shaking optimisé
 - Tests unitaires avec Jest
@@ -136,6 +143,7 @@ et ce projet adhère à [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Prévu
+
 - Module String dédié
 - Module Object pour manipulation d'objets
 - Module URL pour parsing et manipulation

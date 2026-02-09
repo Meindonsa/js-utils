@@ -14,8 +14,8 @@
  * ```
  */
 export function isValidEmail(email: string): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
 }
 
 /**
@@ -29,12 +29,12 @@ export function isValidEmail(email: string): boolean {
  * ```
  */
 export function isValidUrl(url: string): boolean {
-    try {
-        new URL(url);
-        return true;
-    } catch {
-        return false;
-    }
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 /**
@@ -48,10 +48,10 @@ export function isValidUrl(url: string): boolean {
  * ```
  */
 export function isValidPhone(phone: string): boolean {
-    // Remove all non-digit characters
-    const cleaned = phone.replace(/\D/g, '');
-    // Check if it has between 10 and 15 digits
-    return cleaned.length >= 10 && cleaned.length <= 15;
+  // Remove all non-digit characters
+  const cleaned = phone.replace(/\D/g, '');
+  // Check if it has between 10 and 15 digits
+  return cleaned.length >= 10 && cleaned.length <= 15;
 }
 
 /**
@@ -64,30 +64,30 @@ export function isValidPhone(phone: string): boolean {
  * ```
  */
 export function isValidCreditCard(cardNumber: string): boolean {
-    const cleaned = cardNumber.replace(/\s/g, '');
+  const cleaned = cardNumber.replace(/\s/g, '');
 
-    if (!/^\d+$/.test(cleaned)) {
-        return false;
+  if (!/^\d+$/.test(cleaned)) {
+    return false;
+  }
+
+  let sum = 0;
+  let isEven = false;
+
+  for (let i = cleaned.length - 1; i >= 0; i--) {
+    let digit = parseInt(cleaned[i], 10);
+
+    if (isEven) {
+      digit *= 2;
+      if (digit > 9) {
+        digit -= 9;
+      }
     }
 
-    let sum = 0;
-    let isEven = false;
+    sum += digit;
+    isEven = !isEven;
+  }
 
-    for (let i = cleaned.length - 1; i >= 0; i--) {
-        let digit = parseInt(cleaned[i], 10);
-
-        if (isEven) {
-            digit *= 2;
-            if (digit > 9) {
-                digit -= 9;
-            }
-        }
-
-        sum += digit;
-        isEven = !isEven;
-    }
-
-    return sum % 10 === 0;
+  return sum % 10 === 0;
 }
 
 /**
@@ -102,49 +102,49 @@ export function isValidCreditCard(cardNumber: string): boolean {
  * ```
  */
 export function validatePassword(
-    password: string,
-    options: {
-        minLength?: number;
-        requireUppercase?: boolean;
-        requireLowercase?: boolean;
-        requireNumbers?: boolean;
-        requireSpecialChars?: boolean;
-    } = {}
+  password: string,
+  options: {
+    minLength?: number;
+    requireUppercase?: boolean;
+    requireLowercase?: boolean;
+    requireNumbers?: boolean;
+    requireSpecialChars?: boolean;
+  } = {},
 ): { isValid: boolean; errors: string[] } {
-    const {
-        minLength = 8,
-        requireUppercase = true,
-        requireLowercase = true,
-        requireNumbers = true,
-        requireSpecialChars = true,
-    } = options;
+  const {
+    minLength = 8,
+    requireUppercase = true,
+    requireLowercase = true,
+    requireNumbers = true,
+    requireSpecialChars = true,
+  } = options;
 
-    const errors: string[] = [];
+  const errors: string[] = [];
 
-    if (password.length < minLength) {
-        errors.push(`Password must be at least ${minLength} characters long`);
-    }
+  if (password.length < minLength) {
+    errors.push(`Password must be at least ${minLength} characters long`);
+  }
 
-    if (requireUppercase && !/[A-Z]/.test(password)) {
-        errors.push('Password must contain at least one uppercase letter');
-    }
+  if (requireUppercase && !/[A-Z]/.test(password)) {
+    errors.push('Password must contain at least one uppercase letter');
+  }
 
-    if (requireLowercase && !/[a-z]/.test(password)) {
-        errors.push('Password must contain at least one lowercase letter');
-    }
+  if (requireLowercase && !/[a-z]/.test(password)) {
+    errors.push('Password must contain at least one lowercase letter');
+  }
 
-    if (requireNumbers && !/\d/.test(password)) {
-        errors.push('Password must contain at least one number');
-    }
+  if (requireNumbers && !/\d/.test(password)) {
+    errors.push('Password must contain at least one number');
+  }
 
-    if (requireSpecialChars && !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-        errors.push('Password must contain at least one special character');
-    }
+  if (requireSpecialChars && !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+    errors.push('Password must contain at least one special character');
+  }
 
-    return {
-        isValid: errors.length === 0,
-        errors,
-    };
+  return {
+    isValid: errors.length === 0,
+    errors,
+  };
 }
 
 /**
@@ -159,7 +159,7 @@ export function validatePassword(
  * ```
  */
 export function isNumeric(value: string): boolean {
-    return !isNaN(parseFloat(value)) && isFinite(Number(value));
+  return !isNaN(parseFloat(value)) && isFinite(Number(value));
 }
 
 /**
@@ -173,7 +173,7 @@ export function isNumeric(value: string): boolean {
  * ```
  */
 export function isAlpha(value: string): boolean {
-    return /^[a-zA-Z]+$/.test(value);
+  return /^[a-zA-Z]+$/.test(value);
 }
 
 /**
@@ -187,7 +187,7 @@ export function isAlpha(value: string): boolean {
  * ```
  */
 export function isAlphanumeric(value: string): boolean {
-    return /^[a-zA-Z0-9]+$/.test(value);
+  return /^[a-zA-Z0-9]+$/.test(value);
 }
 
 /**
@@ -204,19 +204,19 @@ export function isAlphanumeric(value: string): boolean {
  * ```
  */
 export function isEmpty(value: any): boolean {
-    if (value === null || value === undefined) {
-        return true;
-    }
+  if (value === null || value === undefined) {
+    return true;
+  }
 
-    if (typeof value === 'string' || Array.isArray(value)) {
-        return value.length === 0;
-    }
+  if (typeof value === 'string' || Array.isArray(value)) {
+    return value.length === 0;
+  }
 
-    if (typeof value === 'object') {
-        return Object.keys(value).length === 0;
-    }
+  if (typeof value === 'object') {
+    return Object.keys(value).length === 0;
+  }
 
-    return false;
+  return false;
 }
 
 /**
@@ -232,7 +232,7 @@ export function isEmpty(value: any): boolean {
  * ```
  */
 export function isInRange(value: number, min: number, max: number): boolean {
-    return value >= min && value <= max;
+  return value >= min && value <= max;
 }
 
 /**
@@ -246,7 +246,7 @@ export function isInRange(value: number, min: number, max: number): boolean {
  * ```
  */
 export function matchesPattern(value: string, pattern: RegExp): boolean {
-    return pattern.test(value);
+  return pattern.test(value);
 }
 
 /**
@@ -261,8 +261,8 @@ export function matchesPattern(value: string, pattern: RegExp): boolean {
  * ```
  */
 export function isValidDate(date: string | Date): boolean {
-    const d = typeof date === 'string' ? new Date(date) : date;
-    return d instanceof Date && !isNaN(d.getTime());
+  const d = typeof date === 'string' ? new Date(date) : date;
+  return d instanceof Date && !isNaN(d.getTime());
 }
 
 /**
@@ -276,12 +276,12 @@ export function isValidDate(date: string | Date): boolean {
  * ```
  */
 export function isValidJson(value: string): boolean {
-    try {
-        JSON.parse(value);
-        return true;
-    } catch {
-        return false;
-    }
+  try {
+    JSON.parse(value);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 /**
@@ -296,7 +296,7 @@ export function isValidJson(value: string): boolean {
  * ```
  */
 export function isValidHexColor(color: string): boolean {
-    return /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(color);
+  return /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(color);
 }
 
 /**
@@ -310,13 +310,13 @@ export function isValidHexColor(color: string): boolean {
  * ```
  */
 export function isValidIpv4(ip: string): boolean {
-    const parts = ip.split('.');
-    if (parts.length !== 4) return false;
+  const parts = ip.split('.');
+  if (parts.length !== 4) return false;
 
-    return parts.every((part) => {
-        const num = parseInt(part, 10);
-        return num >= 0 && num <= 255 && part === num.toString();
-    });
+  return parts.every((part) => {
+    const num = parseInt(part, 10);
+    return num >= 0 && num <= 255 && part === num.toString();
+  });
 }
 
 /**
@@ -330,5 +330,5 @@ export function isValidIpv4(ip: string): boolean {
  * ```
  */
 export function isValidUsername(username: string): boolean {
-    return /^[a-zA-Z0-9_-]{3,20}$/.test(username);
+  return /^[a-zA-Z0-9_-]{3,20}$/.test(username);
 }

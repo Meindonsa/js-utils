@@ -15,20 +15,20 @@
  * ```
  */
 export function formatDate(date: Date, format: string): string {
-    const year: number = date.getFullYear();
-    const month: string = String(date.getMonth() + 1).padStart(2, '0');
-    const day: string = String(date.getDate()).padStart(2, '0');
-    const hours: string = String(date.getHours()).padStart(2, '0');
-    const minutes: string = String(date.getMinutes()).padStart(2, '0');
-    const seconds: string = String(date.getSeconds()).padStart(2, '0');
+  const year: number = date.getFullYear();
+  const month: string = String(date.getMonth() + 1).padStart(2, '0');
+  const day: string = String(date.getDate()).padStart(2, '0');
+  const hours: string = String(date.getHours()).padStart(2, '0');
+  const minutes: string = String(date.getMinutes()).padStart(2, '0');
+  const seconds: string = String(date.getSeconds()).padStart(2, '0');
 
-    return format
-        .replace('YYYY', String(year))
-        .replace('MM', month)
-        .replace('DD', day)
-        .replace('HH', hours)
-        .replace('mm', minutes)
-        .replace('ss', seconds);
+  return format
+    .replace('YYYY', String(year))
+    .replace('MM', month)
+    .replace('DD', day)
+    .replace('HH', hours)
+    .replace('mm', minutes)
+    .replace('ss', seconds);
 }
 
 /**
@@ -43,9 +43,9 @@ export function formatDate(date: Date, format: string): string {
  * ```
  */
 export function addDays(date: Date, days: number): Date {
-    const result = new Date(date);
-    result.setDate(result.getDate() + days);
-    return result;
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
 }
 
 /**
@@ -59,9 +59,9 @@ export function addDays(date: Date, days: number): Date {
  * ```
  */
 export function addMonths(date: Date, months: number): Date {
-    const result = new Date(date);
-    result.setMonth(result.getMonth() + months);
-    return result;
+  const result = new Date(date);
+  result.setMonth(result.getMonth() + months);
+  return result;
 }
 
 /**
@@ -75,9 +75,9 @@ export function addMonths(date: Date, months: number): Date {
  * ```
  */
 export function addYears(date: Date, years: number): Date {
-    const result = new Date(date);
-    result.setFullYear(result.getFullYear() + years);
-    return result;
+  const result = new Date(date);
+  result.setFullYear(result.getFullYear() + years);
+  return result;
 }
 
 /**
@@ -91,10 +91,10 @@ export function addYears(date: Date, years: number): Date {
  * ```
  */
 export function diffInDays(date1: Date, date2: Date): number {
-    const msPerDay = 24 * 60 * 60 * 1000;
-    const utc1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
-    const utc2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
-    return Math.floor((utc1 - utc2) / msPerDay);
+  const msPerDay = 24 * 60 * 60 * 1000;
+  const utc1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
+  const utc2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
+  return Math.floor((utc1 - utc2) / msPerDay);
 }
 
 /**
@@ -108,8 +108,8 @@ export function diffInDays(date1: Date, date2: Date): number {
  * ```
  */
 export function diffInHours(date1: Date, date2: Date): number {
-    const msPerHour = 60 * 60 * 1000;
-    return Math.floor((date1.getTime() - date2.getTime()) / msPerHour);
+  const msPerHour = 60 * 60 * 1000;
+  return Math.floor((date1.getTime() - date2.getTime()) / msPerHour);
 }
 
 /**
@@ -123,8 +123,8 @@ export function diffInHours(date1: Date, date2: Date): number {
  * ```
  */
 export function diffInMinutes(date1: Date, date2: Date): number {
-    const msPerMinute: number = 60 * 1000;
-    return Math.floor((date1.getTime() - date2.getTime()) / msPerMinute);
+  const msPerMinute: number = 60 * 1000;
+  return Math.floor((date1.getTime() - date2.getTime()) / msPerMinute);
 }
 
 /**
@@ -137,12 +137,12 @@ export function diffInMinutes(date1: Date, date2: Date): number {
  * ```
  */
 export function isToday(date: Date): boolean {
-    const today = new Date();
-    return (
-        date.getDate() === today.getDate() &&
-        date.getMonth() === today.getMonth() &&
-        date.getFullYear() === today.getFullYear()
-    );
+  const today = new Date();
+  return (
+    date.getDate() === today.getDate() &&
+    date.getMonth() === today.getMonth() &&
+    date.getFullYear() === today.getFullYear()
+  );
 }
 
 /**
@@ -155,12 +155,12 @@ export function isToday(date: Date): boolean {
  * ```
  */
 export function isYesterday(date: Date): boolean {
-    const yesterday: Date = addDays(new Date(), -1);
-    return (
-        date.getDate() === yesterday.getDate() &&
-        date.getMonth() === yesterday.getMonth() &&
-        date.getFullYear() === yesterday.getFullYear()
-    );
+  const yesterday: Date = addDays(new Date(), -1);
+  return (
+    date.getDate() === yesterday.getDate() &&
+    date.getMonth() === yesterday.getMonth() &&
+    date.getFullYear() === yesterday.getFullYear()
+  );
 }
 
 /**
@@ -173,12 +173,12 @@ export function isYesterday(date: Date): boolean {
  * ```
  */
 export function isTomorrow(date: Date): boolean {
-    const tomorrow: Date = addDays(new Date(), 1);
-    return (
-        date.getDate() === tomorrow.getDate() &&
-        date.getMonth() === tomorrow.getMonth() &&
-        date.getFullYear() === tomorrow.getFullYear()
-    );
+  const tomorrow: Date = addDays(new Date(), 1);
+  return (
+    date.getDate() === tomorrow.getDate() &&
+    date.getMonth() === tomorrow.getMonth() &&
+    date.getFullYear() === tomorrow.getFullYear()
+  );
 }
 
 /**
@@ -192,7 +192,7 @@ export function isTomorrow(date: Date): boolean {
  * ```
  */
 export function isLeapYear(year: number): boolean {
-    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 }
 
 /**
@@ -205,9 +205,9 @@ export function isLeapYear(year: number): boolean {
  * ```
  */
 export function startOfDay(date: Date): Date {
-    const result = new Date(date);
-    result.setHours(0, 0, 0, 0);
-    return result;
+  const result = new Date(date);
+  result.setHours(0, 0, 0, 0);
+  return result;
 }
 
 /**
@@ -220,9 +220,9 @@ export function startOfDay(date: Date): Date {
  * ```
  */
 export function endOfDay(date: Date): Date {
-    const result = new Date(date);
-    result.setHours(23, 59, 59, 999);
-    return result;
+  const result = new Date(date);
+  result.setHours(23, 59, 59, 999);
+  return result;
 }
 
 /**
@@ -235,10 +235,10 @@ export function endOfDay(date: Date): Date {
  * ```
  */
 export function startOfMonth(date: Date): Date {
-    const result = new Date(date);
-    result.setDate(1);
-    result.setHours(0, 0, 0, 0);
-    return result;
+  const result = new Date(date);
+  result.setDate(1);
+  result.setHours(0, 0, 0, 0);
+  return result;
 }
 
 /**
@@ -251,10 +251,10 @@ export function startOfMonth(date: Date): Date {
  * ```
  */
 export function endOfMonth(date: Date): Date {
-    const result = new Date(date);
-    result.setMonth(result.getMonth() + 1, 0);
-    result.setHours(23, 59, 59, 999);
-    return result;
+  const result = new Date(date);
+  result.setMonth(result.getMonth() + 1, 0);
+  result.setHours(23, 59, 59, 999);
+  return result;
 }
 
 /**
@@ -270,19 +270,19 @@ export function endOfMonth(date: Date): Date {
  * ```
  */
 export function isBetween(
-    date: Date,
-    startDate: Date,
-    endDate: Date,
-    inclusive: boolean = true
+  date: Date,
+  startDate: Date,
+  endDate: Date,
+  inclusive: boolean = true,
 ): boolean {
-    const time = date.getTime();
-    const start = startDate.getTime();
-    const end = endDate.getTime();
+  const time = date.getTime();
+  const start = startDate.getTime();
+  const end = endDate.getTime();
 
-    if (inclusive) {
-        return time >= start && time <= end;
-    }
-    return time > start && time < end;
+  if (inclusive) {
+    return time >= start && time <= end;
+  }
+  return time > start && time < end;
 }
 
 /**
@@ -297,29 +297,29 @@ export function isBetween(
  * ```
  */
 export function getRelativeTime(date: Date, baseDate: Date = new Date()): string {
-    const seconds = Math.floor((baseDate.getTime() - date.getTime()) / 1000);
+  const seconds = Math.floor((baseDate.getTime() - date.getTime()) / 1000);
 
-    if (Math.abs(seconds) < 60) {
-        return 'just now';
-    }
-
-    const intervals = [
-        { label: 'year', seconds: 31536000 },
-        { label: 'month', seconds: 2592000 },
-        { label: 'day', seconds: 86400 },
-        { label: 'hour', seconds: 3600 },
-        { label: 'minute', seconds: 60 },
-    ];
-
-    for (const interval of intervals) {
-        const count = Math.floor(Math.abs(seconds) / interval.seconds);
-        if (count >= 1) {
-            const plural = count > 1 ? 's' : '';
-            return seconds > 0
-                ? `${count} ${interval.label}${plural} ago`
-                : `in ${count} ${interval.label}${plural}`;
-        }
-    }
-
+  if (Math.abs(seconds) < 60) {
     return 'just now';
+  }
+
+  const intervals = [
+    { label: 'year', seconds: 31536000 },
+    { label: 'month', seconds: 2592000 },
+    { label: 'day', seconds: 86400 },
+    { label: 'hour', seconds: 3600 },
+    { label: 'minute', seconds: 60 },
+  ];
+
+  for (const interval of intervals) {
+    const count = Math.floor(Math.abs(seconds) / interval.seconds);
+    if (count >= 1) {
+      const plural = count > 1 ? 's' : '';
+      return seconds > 0
+        ? `${count} ${interval.label}${plural} ago`
+        : `in ${count} ${interval.label}${plural}`;
+    }
+  }
+
+  return 'just now';
 }

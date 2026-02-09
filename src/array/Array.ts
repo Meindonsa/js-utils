@@ -15,12 +15,8 @@
  * findByProperty(users, 'id', 2) // { id: 2, name: 'Jane' }
  * ```
  */
-export function findByProperty<T>(
-    array: T[],
-    property: keyof T,
-    value: any
-): T | undefined {
-    return array.find((item) => item[property] === value);
+export function findByProperty<T>(array: T[], property: keyof T, value: any): T | undefined {
+  return array.find((item) => item[property] === value);
 }
 
 /**
@@ -35,12 +31,8 @@ export function findByProperty<T>(
  * findAllByProperty(users, 'role', 'admin') // [{ role: 'admin' }, { role: 'admin' }]
  * ```
  */
-export function findAllByProperty<T>(
-    array: T[],
-    property: keyof T,
-    value: any
-): T[] {
-    return array.filter((item) => item[property] === value);
+export function findAllByProperty<T>(array: T[], property: keyof T, value: any): T[] {
+  return array.filter((item) => item[property] === value);
 }
 
 /**
@@ -55,12 +47,8 @@ export function findAllByProperty<T>(
  * findIndexByProperty(items, 'id', 2) // 1
  * ```
  */
-export function findIndexByProperty<T>(
-    array: T[],
-    property: keyof T,
-    value: any
-): number {
-    return array.findIndex((item) => item[property] === value);
+export function findIndexByProperty<T>(array: T[], property: keyof T, value: any): number {
+  return array.findIndex((item) => item[property] === value);
 }
 
 /**
@@ -75,18 +63,14 @@ export function findIndexByProperty<T>(
  * searchArray(users, 'JOHN', ['name', 'email'])
  * ```
  */
-export function searchArray<T>(
-    array: T[],
-    searchTerm: string,
-    properties: (keyof T)[]
-): T[] {
-    const term = searchTerm.toLowerCase();
-    return array.filter((item) =>
-        properties.some((prop) => {
-            const value = item[prop];
-            return typeof value === 'string' && value.toLowerCase().includes(term);
-        })
-    );
+export function searchArray<T>(array: T[], searchTerm: string, properties: (keyof T)[]): T[] {
+  const term = searchTerm.toLowerCase();
+  return array.filter((item) =>
+    properties.some((prop) => {
+      const value = item[prop];
+      return typeof value === 'string' && value.toLowerCase().includes(term);
+    }),
+  );
 }
 
 /**
@@ -100,8 +84,8 @@ export function searchArray<T>(
  * ```
  */
 export function unique<T>(array: T[]): T[] {
-    // @ts-ignore
-    return [...new Set(array)];
+  // @ts-ignore
+  return [...new Set(array)];
 }
 
 /**
@@ -116,15 +100,15 @@ export function unique<T>(array: T[]): T[] {
  * ```
  */
 export function uniqueByProperty<T>(array: T[], property: keyof T): T[] {
-    const seen = new Set();
-    return array.filter((item) => {
-        const value = item[property];
-        if (seen.has(value)) {
-            return false;
-        }
-        seen.add(value);
-        return true;
-    });
+  const seen = new Set();
+  return array.filter((item) => {
+    const value = item[property];
+    if (seen.has(value)) {
+      return false;
+    }
+    seen.add(value);
+    return true;
+  });
 }
 
 /**
@@ -140,14 +124,17 @@ export function uniqueByProperty<T>(array: T[], property: keyof T): T[] {
  * ```
  */
 export function groupBy<T>(array: T[], property: keyof T): Record<string, T[]> {
-    return array.reduce((groups, item) => {
-        const key = String(item[property]);
-        if (!groups[key]) {
-            groups[key] = [];
-        }
-        groups[key].push(item);
-        return groups;
-    }, {} as Record<string, T[]>);
+  return array.reduce(
+    (groups, item) => {
+      const key = String(item[property]);
+      if (!groups[key]) {
+        groups[key] = [];
+      }
+      groups[key].push(item);
+      return groups;
+    },
+    {} as Record<string, T[]>,
+  );
 }
 
 /**
@@ -163,19 +150,15 @@ export function groupBy<T>(array: T[], property: keyof T): Record<string, T[]> {
  * sortBy(items, 'age', 'desc') // [{ age: 30 }, { age: 25 }, { age: 20 }]
  * ```
  */
-export function sortBy<T>(
-    array: T[],
-    property: keyof T,
-    order: 'asc' | 'desc' = 'asc'
-): T[] {
-    return [...array].sort((a, b) => {
-        const aVal = a[property];
-        const bVal = b[property];
+export function sortBy<T>(array: T[], property: keyof T, order: 'asc' | 'desc' = 'asc'): T[] {
+  return [...array].sort((a, b) => {
+    const aVal = a[property];
+    const bVal = b[property];
 
-        if (aVal < bVal) return order === 'asc' ? -1 : 1;
-        if (aVal > bVal) return order === 'asc' ? 1 : -1;
-        return 0;
-    });
+    if (aVal < bVal) return order === 'asc' ? -1 : 1;
+    if (aVal > bVal) return order === 'asc' ? 1 : -1;
+    return 0;
+  });
 }
 
 /**
@@ -189,11 +172,11 @@ export function sortBy<T>(
  * ```
  */
 export function chunk<T>(array: T[], size: number): T[][] {
-    const chunks: T[][] = [];
-    for (let i = 0; i < array.length; i += size) {
-        chunks.push(array.slice(i, i + size));
-    }
-    return chunks;
+  const chunks: T[][] = [];
+  for (let i = 0; i < array.length; i += size) {
+    chunks.push(array.slice(i, i + size));
+  }
+  return chunks;
 }
 
 /**
@@ -208,12 +191,11 @@ export function chunk<T>(array: T[], size: number): T[][] {
  * ```
  */
 export function flatten<T>(array: any[], depth: number = 1): T[] {
-    if (depth === 0) return array;
-    return array.reduce(
-        (flat, item) =>
-            flat.concat(Array.isArray(item) ? flatten(item, depth - 1) : item),
-        []
-    );
+  if (depth === 0) return array;
+  return array.reduce(
+    (flat, item) => flat.concat(Array.isArray(item) ? flatten(item, depth - 1) : item),
+    [],
+  );
 }
 
 /**
@@ -227,8 +209,8 @@ export function flatten<T>(array: any[], depth: number = 1): T[] {
  * ```
  */
 export function intersection<T>(array1: T[], array2: T[]): T[] {
-    const set2 = new Set(array2);
-    return unique(array1.filter((item) => set2.has(item)));
+  const set2 = new Set(array2);
+  return unique(array1.filter((item) => set2.has(item)));
 }
 
 /**
@@ -242,8 +224,8 @@ export function intersection<T>(array1: T[], array2: T[]): T[] {
  * ```
  */
 export function difference<T>(array1: T[], array2: T[]): T[] {
-    const set2 = new Set(array2);
-    return array1.filter((item) => !set2.has(item));
+  const set2 = new Set(array2);
+  return array1.filter((item) => !set2.has(item));
 }
 
 /**
@@ -257,7 +239,7 @@ export function difference<T>(array1: T[], array2: T[]): T[] {
  * ```
  */
 export function union<T>(array1: T[], array2: T[]): T[] {
-    return unique([...array1, ...array2]);
+  return unique([...array1, ...array2]);
 }
 
 /**
@@ -270,7 +252,7 @@ export function union<T>(array1: T[], array2: T[]): T[] {
  * ```
  */
 export function sum(array: number[]): number {
-    return array.reduce((total, num) => total + num, 0);
+  return array.reduce((total, num) => total + num, 0);
 }
 
 /**
@@ -283,7 +265,7 @@ export function sum(array: number[]): number {
  * ```
  */
 export function average(array: number[]): number {
-    return array.length === 0 ? 0 : sum(array) / array.length;
+  return array.length === 0 ? 0 : sum(array) / array.length;
 }
 
 /**
@@ -296,7 +278,7 @@ export function average(array: number[]): number {
  * ```
  */
 export function min(array: number[]): number {
-    return Math.min(...array);
+  return Math.min(...array);
 }
 
 /**
@@ -309,7 +291,7 @@ export function min(array: number[]): number {
  * ```
  */
 export function max(array: number[]): number {
-    return Math.max(...array);
+  return Math.max(...array);
 }
 
 /**
@@ -322,7 +304,7 @@ export function max(array: number[]): number {
  * ```
  */
 export function range(array: number[]): { min: number; max: number } {
-    return { min: min(array), max: max(array) };
+  return { min: min(array), max: max(array) };
 }
 
 /**
@@ -338,29 +320,29 @@ export function range(array: number[]): { min: number; max: number } {
  * ```
  */
 export function paginate<T>(
-    array: T[],
-    page: number,
-    pageSize: number
+  array: T[],
+  page: number,
+  pageSize: number,
 ): {
-    data: T[];
-    page: number;
-    pageSize: number;
-    totalPages: number;
-    totalItems: number;
+  data: T[];
+  page: number;
+  pageSize: number;
+  totalPages: number;
+  totalItems: number;
 } {
-    const totalItems = array.length;
-    const totalPages = Math.ceil(totalItems / pageSize);
-    const startIndex = (page - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    const data = array.slice(startIndex, endIndex);
+  const totalItems = array.length;
+  const totalPages = Math.ceil(totalItems / pageSize);
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const data = array.slice(startIndex, endIndex);
 
-    return {
-        data,
-        page,
-        pageSize,
-        totalPages,
-        totalItems,
-    };
+  return {
+    data,
+    page,
+    pageSize,
+    totalPages,
+    totalItems,
+  };
 }
 
 /**
@@ -373,12 +355,12 @@ export function paginate<T>(
  * ```
  */
 export function shuffleArray<T>(array: T[]): T[] {
-    const result = [...array];
-    for (let i = result.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [result[i], result[j]] = [result[j], result[i]];
-    }
-    return result;
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
 }
 
 /**
@@ -392,8 +374,8 @@ export function shuffleArray<T>(array: T[]): T[] {
  * ```
  */
 export function sample<T>(array: T[], count: number): T[] {
-    const shuffled = shuffleArray(array);
-    return shuffled.slice(0, Math.min(count, array.length));
+  const shuffled = shuffleArray(array);
+  return shuffled.slice(0, Math.min(count, array.length));
 }
 
 /**
@@ -406,13 +388,14 @@ export function sample<T>(array: T[], count: number): T[] {
  * // { a: 3, b: 2, c: 1 }
  * ```
  */
-export function countOccurrences<T extends string | number>(
-    array: T[]
-): Record<T, number> {
-    return array.reduce((counts, item) => {
-        counts[item] = (counts[item] || 0) + 1;
-        return counts;
-    }, {} as Record<T, number>);
+export function countOccurrences<T extends string | number>(array: T[]): Record<T, number> {
+  return array.reduce(
+    (counts, item) => {
+      counts[item] = (counts[item] || 0) + 1;
+      return counts;
+    },
+    {} as Record<T, number>,
+  );
 }
 
 /**
@@ -427,12 +410,12 @@ export function countOccurrences<T extends string | number>(
  * ```
  */
 export function isEqual<T>(array1: T[], array2: T[]): boolean {
-    if (array1.length !== array2.length) return false;
-    return array1.every((item, index) => item === array2[index]);
+  if (array1.length !== array2.length) return false;
+  return array1.every((item, index) => item === array2[index]);
 }
 
 export function rotate<T>(array: T[], positions: number): T[] {
-    const len = array.length;
-    const offset = ((positions % len) + len) % len;
-    return [...array.slice(-offset), ...array.slice(0, -offset)];
+  const len = array.length;
+  const offset = ((positions % len) + len) % len;
+  return [...array.slice(-offset), ...array.slice(0, -offset)];
 }

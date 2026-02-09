@@ -29,6 +29,7 @@ yarn add @meindonsa/js-utils
 ## 📖 Modules disponibles
 
 ### 📁 File (Fichiers)
+
 Utilitaires pour la manipulation de fichiers, images, vidéos et PDFs.
 
 ```typescript
@@ -48,6 +49,7 @@ downloadFile(blob, 'document.pdf');
 ```
 
 ### 📅 Date
+
 Utilitaires pour la manipulation de dates et heures.
 
 ```typescript
@@ -67,6 +69,7 @@ isToday(new Date()); // true
 ```
 
 ### ✅ Validation
+
 Utilitaires pour la validation de données.
 
 ```typescript
@@ -77,9 +80,9 @@ isValidEmail('user@example.com'); // true
 
 // Valider un mot de passe
 const result = validatePassword('MyP@ssw0rd', {
-    minLength: 8,
-    requireUppercase: true,
-    requireNumbers: true
+  minLength: 8,
+  requireUppercase: true,
+  requireNumbers: true,
 });
 // { isValid: true, errors: [] }
 
@@ -88,6 +91,7 @@ isValidUrl('https://example.com'); // true
 ```
 
 ### 🎨 Format
+
 Utilitaires pour le formatage de nombres, devises et texte.
 
 ```typescript
@@ -107,10 +111,16 @@ slugify('Hello World!'); // 'hello-world'
 ```
 
 ### 🎲 Random
+
 Utilitaires pour la génération de valeurs aléatoires.
 
 ```typescript
-import { randomNumeric, randomAlpha, randomAlphanumeric, randomUuid } from '@meindonsa/js-utils/random';
+import {
+  randomNumeric,
+  randomAlpha,
+  randomAlphanumeric,
+  randomUuid,
+} from '@meindonsa/js-utils/random';
 
 // Générer un code numérique
 randomNumeric(6); // '472819'
@@ -126,6 +136,7 @@ randomUuid(); // '550e8400-e29b-41d4-a716-446655440000'
 ```
 
 ### 🔍 Array
+
 Utilitaires pour la recherche et manipulation de tableaux.
 
 ```typescript

@@ -23,11 +23,4 @@ import * as FileUtils from './file';
 import * as ValidationUtils from './validation/Validation';
 import * as RandomUtils from './random/Random';
 
-export {
-    FileUtils,
-    DateUtils,
-    ValidationUtils,
-    FormatUtils,
-    RandomUtils,
-    ArrayUtils,
-};
+export { FileUtils, DateUtils, ValidationUtils, FormatUtils, RandomUtils, ArrayUtils };

@@ -15,7 +15,7 @@
  * ```
  */
 export function randomNumber(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**
@@ -28,7 +28,7 @@ export function randomNumber(min: number, max: number): number {
  * ```
  */
 export function randomInt(max: number): number {
-    return Math.floor(Math.random() * max);
+  return Math.floor(Math.random() * max);
 }
 
 /**
@@ -44,8 +44,8 @@ export function randomInt(max: number): number {
  * ```
  */
 export function randomFloat(min: number, max: number, decimals: number = 2): number {
-    const random = Math.random() * (max - min) + min;
-    return parseFloat(random.toFixed(decimals));
+  const random = Math.random() * (max - min) + min;
+  return parseFloat(random.toFixed(decimals));
 }
 
 /**
@@ -59,7 +59,7 @@ export function randomFloat(min: number, max: number, decimals: number = 2): num
  * ```
  */
 export function randomBoolean(probability: number = 0.5): boolean {
-    return Math.random() < probability;
+  return Math.random() < probability;
 }
 
 /**
@@ -73,11 +73,11 @@ export function randomBoolean(probability: number = 0.5): boolean {
  * ```
  */
 export function randomNumeric(length: number): string {
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        result += randomInt(10).toString();
-    }
-    return result;
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += randomInt(10).toString();
+  }
+  return result;
 }
 
 /**
@@ -92,14 +92,14 @@ export function randomNumeric(length: number): string {
  * ```
  */
 export function randomAlpha(length: number, uppercase: boolean = false): string {
-    const chars = 'abcdefghijklmnopqrstuvwxyz';
-    const source = uppercase ? chars.toUpperCase() : chars;
+  const chars = 'abcdefghijklmnopqrstuvwxyz';
+  const source = uppercase ? chars.toUpperCase() : chars;
 
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        result += source[randomInt(source.length)];
-    }
-    return result;
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += source[randomInt(source.length)];
+  }
+  return result;
 }
 
 /**
@@ -115,27 +115,27 @@ export function randomAlpha(length: number, uppercase: boolean = false): string 
  * ```
  */
 export function randomAlphanumeric(
-    length: number,
-    options: {
-        uppercase?: boolean;
-        mixedCase?: boolean;
-    } = {}
+  length: number,
+  options: {
+    uppercase?: boolean;
+    mixedCase?: boolean;
+  } = {},
 ): string {
-    const { uppercase = false, mixedCase = false } = options;
+  const { uppercase = false, mixedCase = false } = options;
 
-    let chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  let chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
-    if (uppercase) {
-        chars = chars.toUpperCase();
-    } else if (mixedCase) {
-        chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    }
+  if (uppercase) {
+    chars = chars.toUpperCase();
+  } else if (mixedCase) {
+    chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  }
 
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        result += chars[randomInt(chars.length)];
-    }
-    return result;
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += chars[randomInt(chars.length)];
+  }
+  return result;
 }
 
 /**
@@ -150,11 +150,11 @@ export function randomAlphanumeric(
  * ```
  */
 export function randomString(length: number, charset: string): string {
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        result += charset[randomInt(charset.length)];
-    }
-    return result;
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += charset[randomInt(charset.length)];
+  }
+  return result;
 }
 
 /**
@@ -166,8 +166,8 @@ export function randomString(length: number, charset: string): string {
  * ```
  */
 export function randomHexColor(): string {
-    const hex = randomInt(0xFFFFFF).toString(16).padStart(6, '0');
-    return `#${hex.toUpperCase()}`;
+  const hex = randomInt(0xffffff).toString(16).padStart(6, '0');
+  return `#${hex.toUpperCase()}`;
 }
 
 /**
@@ -179,11 +179,11 @@ export function randomHexColor(): string {
  * ```
  */
 export function randomUuid(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-        const r = randomInt(16);
-        const v = c === 'x' ? r : (r & 0x3) | 0x8;
-        return v.toString(16);
-    });
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = randomInt(16);
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
 }
 
 /**
@@ -196,7 +196,7 @@ export function randomUuid(): string {
  * ```
  */
 export function randomElement<T>(array: T[]): T {
-    return array[randomInt(array.length)];
+  return array[randomInt(array.length)];
 }
 
 /**
@@ -210,8 +210,8 @@ export function randomElement<T>(array: T[]): T {
  * ```
  */
 export function randomElements<T>(array: T[], count: number): T[] {
-    const shuffled = [...array].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, Math.min(count, array.length));
+  const shuffled = [...array].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, Math.min(count, array.length));
 }
 
 /**
@@ -224,12 +224,12 @@ export function randomElements<T>(array: T[], count: number): T[] {
  * ```
  */
 export function shuffle<T>(array: T[]): T[] {
-    const result = [...array];
-    for (let i = result.length - 1; i > 0; i--) {
-        const j = randomInt(i + 1);
-        [result[i], result[j]] = [result[j], result[i]];
-    }
-    return result;
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = randomInt(i + 1);
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
 }
 
 /**
@@ -244,32 +244,27 @@ export function shuffle<T>(array: T[]): T[] {
  * ```
  */
 export function randomPassword(
-    length: number,
-    options: {
-        uppercase?: boolean;
-        lowercase?: boolean;
-        numbers?: boolean;
-        special?: boolean;
-    } = {}
+  length: number,
+  options: {
+    uppercase?: boolean;
+    lowercase?: boolean;
+    numbers?: boolean;
+    special?: boolean;
+  } = {},
 ): string {
-    const {
-        uppercase = true,
-        lowercase = true,
-        numbers = true,
-        special = true,
-    } = options;
+  const { uppercase = true, lowercase = true, numbers = true, special = true } = options;
 
-    let charset = '';
-    if (lowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
-    if (uppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    if (numbers) charset += '0123456789';
-    if (special) charset += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+  let charset = '';
+  if (lowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
+  if (uppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  if (numbers) charset += '0123456789';
+  if (special) charset += '!@#$%^&*()_+-=[]{}|;:,.<>?';
 
-    if (charset.length === 0) {
-        throw new Error('At least one character type must be enabled');
-    }
+  if (charset.length === 0) {
+    throw new Error('At least one character type must be enabled');
+  }
 
-    return randomString(length, charset);
+  return randomString(length, charset);
 }
 
 /**
@@ -283,10 +278,10 @@ export function randomPassword(
  * ```
  */
 export function randomDate(start: Date, end: Date): Date {
-    const startTime = start.getTime();
-    const endTime = end.getTime();
-    const randomTime = startTime + Math.random() * (endTime - startTime);
-    return new Date(randomTime);
+  const startTime = start.getTime();
+  const endTime = end.getTime();
+  const randomTime = startTime + Math.random() * (endTime - startTime);
+  return new Date(randomTime);
 }
 
 /**
@@ -298,7 +293,7 @@ export function randomDate(start: Date, end: Date): Date {
  * ```
  */
 export function randomIpAddress(): string {
-    return `${randomInt(256)}.${randomInt(256)}.${randomInt(256)}.${randomInt(256)}`;
+  return `${randomInt(256)}.${randomInt(256)}.${randomInt(256)}.${randomInt(256)}`;
 }
 
 /**
@@ -310,8 +305,8 @@ export function randomIpAddress(): string {
  * ```
  */
 export function randomMacAddress(): string {
-    const octets = Array.from({ length: 6 }, () =>
-        randomInt(256).toString(16).padStart(2, '0').toUpperCase()
-    );
-    return octets.join(':');
+  const octets = Array.from({ length: 6 }, () =>
+    randomInt(256).toString(16).padStart(2, '0').toUpperCase(),
+  );
+  return octets.join(':');
 }
