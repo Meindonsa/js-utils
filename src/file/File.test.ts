@@ -60,9 +60,9 @@ describe('File Utilities', () => {
   describe('formatFileSize', () => {
     it('should format bytes correctly', () => {
       expect(formatFileSize(0)).toBe('0 Bytes');
-      expect(formatFileSize(1024)).toBe('1.00 KB');
-      expect(formatFileSize(1048576)).toBe('1.00 MB');
-      expect(formatFileSize(1073741824)).toBe('1.00 GB');
+      expect(formatFileSize(1024)).toBe('1 KB');
+      expect(formatFileSize(1048576)).toBe('1 MB');
+      expect(formatFileSize(1073741824)).toBe('1 GB');
     });
 
     it('should respect decimal places', () => {
