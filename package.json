@@ -81,6 +81,7 @@
     "url": "https://github.com/Meindonsa/js-utils/issues"
   },
   "homepage": "https://github.com/Meindonsa/js-utils#readme",
+  "documentation": "https://meindonsa.github.io/js-utils/index.html",
   "keywords": [
     "typescript",
     "utilities",
