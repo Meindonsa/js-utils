@@ -1,0 +1,23 @@
+{
+  "name": "js-utils",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Meindonsa/js-utils.git"
+  },
+  "author": "Meindonsa",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/Meindonsa/js-utils/issues"
+  },
+  "homepage": "https://github.com/Meindonsa/js-utils#readme",
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "typescript": "^5.9.3"
+  }
+}
